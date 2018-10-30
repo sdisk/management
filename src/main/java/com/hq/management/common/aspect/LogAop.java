@@ -71,6 +71,7 @@ public class LogAop {
         }
         //获取拦截方法的参数
         String className = point.getTarget().getClass().getName();
+        LOGGER.debug(className);
         Object [] params = point.getArgs();
 
         //获取操作名称
