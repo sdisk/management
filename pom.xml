@@ -26,7 +26,7 @@
         <mybatisplus-spring-boot-starter.version>1.0.5</mybatisplus-spring-boot-starter.version>
         <mybatis-plus.version>2.3</mybatis-plus.version>
         <mysql.version>5.1.32</mysql.version>
-        <jackson.version>2.7.4</jackson.version>
+        <jackson.version>2.9.5</jackson.version>
         <druid.version>1.0.19</druid.version>
         <commons-lang3.version>3.4</commons-lang3.version>
         <fastjson.version>1.2.11</fastjson.version>
@@ -61,6 +61,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <!-- 切换log4j2日志读取 -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,8 +75,12 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <optional>true</optional> <!--optional表示依赖不会传递，只对当前的包有用-->
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -83,7 +94,7 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <!--Jackson Json-->
-        <dependency>
+       <!-- <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
@@ -92,9 +103,9 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
+        </dependency>-->
         <!-- 日志处理 -->
-        <dependency>
+      <!--  <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
@@ -108,12 +119,17 @@
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <version>${log4j.over.slf4j}</version>
-        </dependency>
+        </dependency>-->
         <!-- Mybatis -->
-        <dependency>
+       <!-- <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>${mybatis-plus.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>2.3</version>
         </dependency>
         <!-- MySql -->
         <dependency>
@@ -149,7 +165,7 @@
             <version>${kaptcha-version}</version>
         </dependency>
         <!--hibernate-validator -->
-       <!-- <dependency>
+     <!--  <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
@@ -198,7 +214,12 @@
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
         </dependency>
-
+          <!-- 配置 log4j2 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+           <!-- <version>2.0.1.RELEASE</version>-->
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -209,6 +230,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>2.3</version>
         </dependency>
     </dependencies>
 
@@ -221,6 +252,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

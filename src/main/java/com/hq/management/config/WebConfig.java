@@ -5,6 +5,7 @@ import com.google.code.kaptcha.util.Config;
 import com.hq.management.common.listener.ConfigListener;
 import com.hq.management.common.xss.XssFilter;
 import com.hq.management.config.properties.HqProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,7 @@ import java.util.Properties;
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+    @Autowired
     private HqProperties hqProperties;
 
     /**
